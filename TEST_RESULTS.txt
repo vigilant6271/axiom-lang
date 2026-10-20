@@ -1,0 +1,28 @@
+Spreadsheet runtime warmup failed during python startup
+Traceback (most recent call last):
+  File "/tmp/tmp.QlpUkOUI9D/artifact_tool_v2-2.8.66/artifact_tool/patches/warm_spreadsheet_runtime_on_startup.py", line 26, in warm_spreadsheet_runtime_on_startup
+  File "/tmp/tmp.QlpUkOUI9D/artifact_tool_v2-2.8.66/artifact_tool/spreadsheet_warmup.py", line 785, in warm_spreadsheet_runtime
+  File "/tmp/tmp.QlpUkOUI9D/artifact_tool_v2-2.8.66/artifact_tool/spreadsheet_warmup.py", line 718, in _warm_feature_flows
+  File "/tmp/tmp.QlpUkOUI9D/artifact_tool_v2-2.8.66/artifact_tool/spreadsheet_warmup.py", line 509, in _warm_drawing_and_image_flows
+  File "/tmp/tmp.QlpUkOUI9D/artifact_tool_v2-2.8.66/artifact_tool/generated/interface/models.py", line 32861, in bring_to_front
+  File "/tmp/tmp.QlpUkOUI9D/artifact_tool_v2-2.8.66/artifact_tool/rpc/remote.py", line 764, in __call__
+  File "/tmp/tmp.QlpUkOUI9D/artifact_tool_v2-2.8.66/artifact_tool/rpc/client.py", line 175, in call
+artifact_tool.rpc.client.RemoteError: Element ordering requires an owning element collection.
+test_arithmetic_precedence (test_compiler.CompilerPrototypeTests.test_arithmetic_precedence) ... ok
+test_boolean_comparison (test_compiler.CompilerPrototypeTests.test_boolean_comparison) ... ok
+test_division_by_zero (test_compiler.CompilerPrototypeTests.test_division_by_zero) ... ok
+test_immutable_binding (test_compiler.CompilerPrototypeTests.test_immutable_binding) ... ok
+test_lex_error (test_compiler.CompilerPrototypeTests.test_lex_error) ... ok
+test_mutable_binding (test_compiler.CompilerPrototypeTests.test_mutable_binding) ... ok
+test_parse_error (test_compiler.CompilerPrototypeTests.test_parse_error) ... ok
+test_string (test_compiler.CompilerPrototypeTests.test_string) ... ok
+test_undefined_name (test_compiler.CompilerPrototypeTests.test_undefined_name) ... ok
+test_auto_engine_telemetry_opt_in (test_engines.EngineTests.test_auto_engine_telemetry_opt_in) ... ok
+test_bounded_samples (test_engines.EngineTests.test_bounded_samples) ... ok
+test_ema (test_engines.EngineTests.test_ema) ... ok
+test_rejects_nonfinite (test_engines.EngineTests.test_rejects_nonfinite) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 0.001s
+
+OK

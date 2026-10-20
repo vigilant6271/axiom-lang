@@ -1,0 +1,4 @@
+# Axiom prototype example
+let base = 40
+let adjustment = 2
+print(base + adjustment)
