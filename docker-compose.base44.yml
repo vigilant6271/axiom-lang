@@ -1,0 +1,45 @@
+# Base44 sandbox environment for the Axiom prototype.
+#
+# Axiom is a pure-Python (stdlib only) command-line interpreter, so there is no
+# database, no service mesh and no third-party dependency to install. The one
+# service here runs `dev/preview.py`, a sandbox-only harness that executes the
+# project's own commands (`python -m axiom --telemetry examples/*.ax` and
+# `python -m unittest discover -s tests`) and serves their output on host port
+# 3000, because the Base44 preview is a browser and the project has no web UI.
+#
+# The repo is bind-mounted, and the harness shells out to the CLI on every
+# request, so source edits are visible immediately with no rebuild.
+name: axiom-base44
+
+services:
+  axiom-preview:
+    image: python:3.12-slim
+    working_dir: /workspace
+    command: ["python", "dev/preview.py"]
+    environment:
+      - PORT=3000
+    volumes:
+      - ./:/workspace
+    ports:
+      - "3000:3000"
+    restart: on-failure
+    healthcheck:
+      test:
+        - CMD
+        - python
+        - -c
+        - |
+          import sys, urllib.request
+          try:
+              sys.exit(0 if urllib.request.urlopen("http://127.0.0.1:3000/", timeout=10).status == 200 else 1)
+          except Exception as exc:
+              print("preview harness unreachable:", exc)
+              sys.exit(1)
+      interval: 15s
+      timeout: 20s
+      retries: 5
+      start_period: 10s
+    labels:
+      base44.project: "Axiom prototype"
+      base44.kind: "web"
+      base44.port: "3000"
